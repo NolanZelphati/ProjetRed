@@ -75,39 +75,3 @@ func (C *character) craft(q string, r string, p string) {
 	fmt.Println("vous n'avez pas les matériaux")
 }
 
-//   Trouver un objet en fonction de son rang dans l'inventaire puis l'utiliser   //
-func (C *character) verf(rang int) {
-	if rang >= len(C.inventory) {
-		return
-	}
-	if C.inventory[rang] == "potion de santé" {
-		C.takeapot()
-	} else if C.inventory[rang] == "potion de mana" {
-		C.PotiondeMana()
-	} else if C.inventory[rang] == "fiole de poison" {
-		C.poison()
-		C.removestuff(rang)
-	} else if C.inventory[rang] == "livre de sort (boule de feu)" {
-		C.spellBook("boule de feu", rang)
-	} else if C.inventory[rang] == "livre de sort (pichenette)" {
-		C.spellBook("pichenette", rang)
-	} else if C.inventory[rang] == "livre de sort (tatane celeste)" {
-		C.spellBook("tatane celeste", rang)
-	} else if C.inventory[rang] == "chapeau de l'aventurier [15 pv]" {
-		C.addstuff("chapeau de l'aventurier [15 pv]", 1)
-	} else if C.inventory[rang] == "casqu'ette [5 pv]" {
-		C.addstuff("casqu'ette [5 pv]", 1)
-	} else if C.inventory[rang] == "tunique de l'aventurier [25 pv]" {
-		C.addstuff("tunique de l'aventurier [25 pv]", 2)
-	} else if C.inventory[rang] == "armure en carton [10 pv]" {
-		C.addstuff("armure en carton [10 pv]", 2)
-	} else if C.inventory[rang] == "bottes de l'aventurier [15 pv]" {
-		C.addstuff("bottes de l'aventurier [15 pv]", 3)
-	} else if C.inventory[rang] == "jambière en lin [5 pv]" {
-		C.addstuff("jambière en lin [5 pv]", 3)
-	} else if C.inventory[rang] == "épée rouillée [5 damage]" {
-		C.addstuff("épée rouillée [5 damage]", 4)
-	} else if C.inventory[rang] == "épée empoisonnée [5 damage]" {
-		C.addstuff("épée empoisonnée [5 damage]", 4)
-	}
-}

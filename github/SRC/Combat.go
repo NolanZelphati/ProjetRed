@@ -388,3 +388,27 @@ func (C *character) ynitiative() bool {
 		return false
 	}
 }
+
+//   Trouver un objet en fonction de son rang dans l'inventaire puis l'utiliser dans un combat (éviter d'utiliser un objet inutile en combat)   //
+func (C *character) verf2(rang int) bool {
+	if C.inventory[rang] == "potion de santé" && C.life != C.maxlife {
+		C.takeapot()
+		return true
+	} else if C.inventory[rang] == "potion de mana" && C.mana != C.manamax {
+		C.PotiondeMana()
+		return true
+	} else if C.inventory[rang] == "fiole de poison" {
+		C.poison()
+		C.removestuff(rang)
+		return true
+	} else if C.inventory[rang] == "livre de sort (boule de feu)" {
+		C.spellBook("boule de feu", rang)
+		return true
+	} else if C.inventory[rang] == "livre de sort (pichenette)" {
+		C.spellBook("pichenette", rang)
+		return true
+	} else {
+		fmt.Println("vous etes déjà full")
+		return false
+	}
+}
